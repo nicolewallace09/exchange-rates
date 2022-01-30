@@ -12,7 +12,7 @@ Users will be able to select a start date and an end date which will then graphi
 The user should clone the repository from GitHub and install dependencies. To install dependencies run `npm install` and then run the application locally, run `npm start`. 
 
 ## Usage 
-This application is intended for users to be able view the exchange rate from USD to EUR.<br>
+This application is intended for users to be able view the exchange rate from USD to EUR within a series of dates.<br>
 <!-- Please view deployed application on [Git Hub Pages](https://nicolewallace09.github.io/nicolewallace/)<br> -->
 <img src='src/images/home.png'>
 
