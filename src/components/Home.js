@@ -5,7 +5,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 
 const Home = () => {
-    const [items, setItems] = useState([]); 
+    const [items, setItems] = useState({}); 
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
 
