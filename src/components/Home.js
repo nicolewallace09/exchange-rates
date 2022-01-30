@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'; 
-import { Line, LineChart,  XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Label} from 'recharts'; 
+import { Line, LineChart,  XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts'; 
 import { Container, Row, Col, Button } from 'react-bootstrap'; 
 
 const Home = () => {
