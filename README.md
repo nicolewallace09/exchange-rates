@@ -13,6 +13,7 @@ The user should clone the repository from GitHub and install dependencies. To in
 
 ## Usage 
 This application is intended for users to be able view the exchange rate from USD to EUR within a series of dates.<br>
+Please view deployed site [here](https://competent-kilby-6c3bd3.netlify.app/).
 <img src='src/images/home.png'>
 
 ## Questions
