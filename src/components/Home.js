@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import axios from 'axios'; 
 import { Line, LineChart,  XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts'; 
 import { Container, Row, Col, Button } from 'react-bootstrap'; 
@@ -8,36 +8,32 @@ const Home = () => {
     const [endDate, setEndDate] = useState();
     const [graphData, setGraphData] = useState([]); 
 
-    useEffect(() => {
-        getData()
-    }, []);
-
-    const getData = async () => {
-        await axios.get(`https://api.exchangerate.host/timeseries?start_date=${startDate}&end_date=${endDate}&base=USD&symbols=USD,EUR`)
-        .then((response) => {
-            // data times from response specific to rates object 
-            let items = response.data.rates; 
-
-            //  separating the values I need from items object 
-            let dateRanges = Object.keys(items);
-            let rates = Object.values(items);
-
-            // setting my USD/EUR rates into separate variables 
-            let usdRates = rates.map(x => x.USD); 
-            let eurRates = rates.map(x => x.EUR); 
-
-            // empty data object to use to set my graph data
-            let data = []; 
-            
-            // looping through each of my variables to add into my data array
-            for(let i = 0; i < dateRanges.length; i++) {
-                data.push({ date: dateRanges[i], USD: usdRates[i], EUR: eurRates[i] })
-            }
-
-            setGraphData(data); 
-        })
-        .catch((err) => console.log(err)); 
-    }
+    const getData = useCallback(async () => {
+            await axios.get(`https://api.exchangerate.host/timeseries?start_date=${startDate}&end_date=${endDate}&base=USD&symbols=USD,EUR`)
+            .then((response) => {
+                // data times from response specific to rates object 
+                let items = response.data.rates; 
+    
+                //  separating the values I need from items object 
+                let dateRanges = Object.keys(items);
+                let rates = Object.values(items);
+    
+                // setting my USD/EUR rates into separate variables 
+                let usdRates = rates.map(x => x.USD); 
+                let eurRates = rates.map(x => x.EUR); 
+    
+                // empty data object to use to set my graph data
+                let data = []; 
+                
+                // looping through each of my variables to add into my data array
+                for(let i = 0; i < dateRanges.length; i++) {
+                    data.push({ date: dateRanges[i], USD: usdRates[i], EUR: eurRates[i] })
+                }
+    
+                setGraphData(data); 
+            })
+            .catch((err) => console.log(err)); 
+    }, [startDate, endDate]);
    
     return (
         <Container>
